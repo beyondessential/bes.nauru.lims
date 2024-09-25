@@ -1,0 +1,28 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope">
+
+  <!-- Samples listing with additional filters and columns -->
+  <subscriber
+    for="bika.lims.browser.analysisrequest.AnalysisRequestsView
+         bika.lims.interfaces.IAnalysisRequestsFolder"
+    provides="senaite.app.listing.interfaces.IListingViewAdapter"
+    factory=".samples.SamplesListingAdapter" />
+  <subscriber
+    for="bika.lims.browser.analysisrequest.AnalysisRequestsView
+         bika.lims.interfaces.IClient"
+    provides="senaite.app.listing.interfaces.IListingViewAdapter"
+    factory=".samples.SamplesListingAdapter" />
+  <subscriber
+    for="bika.lims.browser.analysisrequest.AnalysisRequestsView
+         bika.lims.interfaces.IBatch"
+    provides="senaite.app.listing.interfaces.IListingViewAdapter"
+    factory=".samples.SamplesListingAdapter" />
+
+  <!-- Clients listing -->
+  <subscriber
+    for="bika.lims.browser.clientfolder.ClientFolderContentsView
+         *"
+    provides="senaite.app.listing.interfaces.IListingViewAdapter"
+    factory=".clients.ClientsListingAdapter" />
+
+</configure>

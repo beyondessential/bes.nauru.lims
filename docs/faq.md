@@ -4,7 +4,7 @@
 
 You can get the password for `admin` user with the following command:
 
-```bash
+```shell
 $ cd /home/senaite/senaite
 $ cat live.cfg | grep user=
 ```
@@ -18,32 +18,32 @@ user=admin:<admin_password>
 
 where `<admin_password>` is the password for `admin` user.
 
-
 ## How to manually reset the password of a given user
 
-Login with `admin` user ([FAQ: How to get the password for admin user](#how-to-get-the-password-for-admin-user)),
-go to "Site Setup > Zope Management Interface > acl_users > source_users", look
-for the username and press the `Password` link next to it. Type the new 
+Login with `admin`
+user ([FAQ: How to get the password for admin user](#how-to-get-the-password-for-admin-user))
+, go to "Site Setup > Zope Management Interface > acl_users > source_users",
+look for the username and press the `Password` link next to it. Type the new
 password and Save.
 
 ## How to deploy/run bin/buildout
 
 Stop all instances:
 
-```bash
+```shell
 $ sudo supervisorctl stop all
 ```
 
 Run bin/buildout
 
-```bash
+```shell
 $ cd ~/senaite
 $ bin/buildout -c live.cfg
 ```
 
 Restart/restore the senaite app stack:
 
-```bash
+```shell
 $ sudo service supervisor reload
 $ sudo service haproxy restart
 $ sudo service nginx restart
@@ -51,10 +51,10 @@ $ sudo service nginx restart
 
 ## How to check which clients are running
 
-You can check which clients are running either by using supervisor's web 
+You can check which clients are running either by using supervisor's web
 interface or by using the following command:
 
-```bash
+```shell
 $ sudo supervisorctl status
 ```
 
@@ -63,31 +63,31 @@ $ sudo supervisorctl status
 Clients logs are located at `/home/senaite/data/senaite/client*`. For instance,
 to follow the log of `client1` at real-time, you can do the following:
 
-```bash
+```shell
 $ cd ~/data/senaite
 $ tail -f client1/event.log
 ```
 
 **Tip**: you can use [multiple terminals](#how-to-enable-multiple-terminals) to
 have multiple tabs in terminal. For instance, imagine you want to keep track of
-logs from multiple zeo clients at same time you want to have a terminal 
+logs from multiple zeo clients at same time you want to have a terminal
 available to do other tasks.
 
 ## How to enable multiple terminals
 
 Allows you to have multiple terminals available in a single SSH session:
 
-```bash
+```shell
 $ byobu
 ```
 
-You can create more tabs with F2 and you can navigate across them with F3 (left)
-and F4 (right).
+You can create more tabs with F2 and navigate across them with F3 (left) and
+F4 (right).
 
 ## How to get the full traceback of an error log entry
 
-Sometimes, when an error happens, users without administration privileges cannot
-see the full stack trace of the error. Rather, a message like follows is 
+Sometimes, when an error happens, users without administration privileges
+cannot see the full stack trace of the error. Rather, a message like follows is
 displayed:
 
 ```
@@ -96,16 +96,16 @@ We're sorry, but there seems to be an error ...
 The error has been logged as entry number 1574751866.520.0788186283412
 ```
 
-To get the full traceback of this error, you need to login with `admin` user 
+To get the full traceback of this error, you need to login with `admin` user
 ([FAQ: How to get the password for admin user](#how-to-get-the-password-for-admin-user))
 and go to "Site Setup > Zope Management Interface" and then press the link
 `error_log`. A view with the list of the most recent error logs will be
 displayed. This list displays the error logs registered from the current client
-you are connected to, so you might need to change the port of the url to see the
-log you are looking for.
+you are connected to, so you might need to change the port of the url to see
+the log you are looking for.
 
 Click to the description of the error log from the list to get the full
-traceback. For instance, for the error entry with the number above 
+traceback. For instance, for the error entry with the number above
 `1574751866.520.0788186283412`, you would get:
 
 ```

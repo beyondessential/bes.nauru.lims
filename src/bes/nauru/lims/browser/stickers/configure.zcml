@@ -1,0 +1,20 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:browser="http://namespaces.zope.org/browser">
+
+  <!-- Custom sticker templates -->
+  <plone:static
+      directory="templates"
+      type="stickers"
+      name="bes.nauru.lims.stickers"/>
+
+  <!-- Stickers preview -->
+  <browser:page
+      for="*"
+      name="sticker"
+      class=".stickersview.StickersDefaultView"
+      permission="zope2.View"
+      layer="bes.nauru.lims.interfaces.IBesNauruLimsLayer" />
+
+</configure>

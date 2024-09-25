@@ -1,7 +1,14 @@
 # Secure access to source code repos
-Host {{ ssh_key_filename }}
+Host github_lims
   HostName ssh.github.com
   Port 443
   User git
   PreferredAuthentications publickey
-  IdentityFile ~/.ssh/{{ ssh_key_filename }}
+  IdentityFile ~/.ssh/github_lims
+
+Host github_bes_lims
+  HostName ssh.github.com
+  Port 443
+  User git
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/github_bes_lims

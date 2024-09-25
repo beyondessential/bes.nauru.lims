@@ -1,6 +1,6 @@
 ## Description
 
-Linked issue: https://github.com/beyondessential/palau.lims/issues/
+Linked issue: 
 
 ## Current behavior
 

@@ -10,21 +10,20 @@ SENAITE. We can categorize them within the following groups/levels:
 - Server baseline configuration: swappiness, partitions distribution, ...
 - Zope DB data access strategy: write-intensive vs read-intensive
 - SENAITE baseline configuration: clients, zodb-cache-size, zodb-socket, ...
-- SENAITE application stack: proxy-cache (nginx), client backends (haproxy), ...
+- SENAITE application stack: proxy-cache (nginx), load balancer (haproxy), ...
 - SENAITE functional usage: users concurrency, types of concurrent tasks, ...
 - Environmental: electricity cut-offs frequency, connectivity, ...
 
-The improvement of the performance requires actions to take place for each of 
-the abovementioned categories. Is also important that some actions might 
-improve the performance at a given category, but might have a bad impact in 
-another. Thus, is important to always keep all categories (or levels) in mind 
+The improvement of the performance requires actions to take place for each of
+the above-mentioned categories. Is also important that some actions might
+improve the performance at a given category, but might have a bad impact in
+another. Thus, is important to always keep all categories (or levels) in mind
 and find the solution that best fits with our needs. Monitoring the system for
-long periods of time while keeping an eye on how the laboratory makes use of 
+long periods of time while keeping an eye on how the laboratory makes use of
 the system is the best strategy to get insights for performance improvement.
 
 In this document, we will explore several mechanisms/actions that might be
 useful for the performance improvement of the system.
-
 
 ## Server baseline configuration
 
@@ -33,9 +32,9 @@ useful for the performance improvement of the system.
 Linux records information about when files were created and last modified as
 well as when it was last accessed (attribute `atime`). There is a cost
 associated with recording the last access time. The ext2 file system of Linux
-has an attribute (`noatime`) that allows the super-user to mark individual 
-files such that their last access time is not recorded. This may lead to 
-significant performance improvements on often accessed frequently changing 
+has an attribute (`noatime`) that allows the super-user to mark individual
+files such that their last access time is not recorded. This may lead to
+significant performance improvements on often accessed frequently changing
 files such as the contents of filestorage and blobstorage folders.
 
 ```bash
@@ -46,12 +45,12 @@ $ sudo chattr -R +A blobstorage
 
 ### Swap space
 
-Swap space (SWP) is the portion of virtual memory that is on the hard disk, 
-used when RAM is full. Since swap is a special file-backed region in the 
-hard-disk for that scratch memory, the I/O access to swap is much slower than 
-direct access to RAM. Thus, Swap is crtically important for when RAM is full, 
-otherwise the system can become practically unable to execute any task, 
-something commonly known as 
+Swap space (SWP) is the portion of virtual memory that is on the hard disk,
+used when RAM is full. Since swap is a special file-backed region in the
+hard-disk for that scratch memory, the I/O access to swap is much slower than
+direct access to RAM. Thus, Swap is critically important for when RAM is full,
+otherwise the system can become practically unable to execute any task,
+something commonly known as
 *[swap-death](https://en.wikipedia.org/wiki/Paging#Swap_death)*.
 
 You can check the amount of Swap of your system by typing the following:
@@ -74,14 +73,14 @@ systems**.
 To summarize:
 
 - Even if there is still available RAM, the Linux Kernel will move memory pages
-which are hardly ever used into swap space.
+  which are hardly ever used into swap space.
 
 - It's better to swap out memory pages that have been inactive for a while,
-keeping often-used data in cache and this should happen when the server is most
-idle, which is the aim of the Kernel.
+  keeping often-used data in cache and this should happen when the server is
+  most idle, which is the aim of the Kernel.
 
 - Avoid setting your swap space too large if it will result in prolonging
-performance issues, outages or your response time.
+  performance issues, outages or your response time.
 
 Although the swap is directly mapped to a logic partition, you can add more
 swap by creating a file for this specific purpose. In this example, we will add
@@ -107,18 +106,19 @@ and make the change permanent in `/etc/fstab`:
 ```
 
 More info:
+
 - [Linux Performance: Why You Should Almost Always Add Swap Space, Hyden James](https://haydenjames.io/linux-performance-almost-always-add-swap-space/)
 - [Swap Management (kernel_dos)](https://www.kernel.org/doc/gorman/html/understand/understand014.html)
 - [Page Frame Reclamation (kernel docs)](https://www.kernel.org/doc/gorman/html/understand/understand013.html)
 
 ### Swappiness
 
-**Swappiness** is a Linux kernel property that defines how often the system 
-will use the swap space. Swappiness can have a value between 0 and 100. A low 
+**Swappiness** is a Linux kernel property that defines how often the system
+will use the swap space. Swappiness can have a value between 0 and 100. A low
 value will make the kernel to try to avoid swapping whenever possible while a
 higher value will make the kernel to use the swap space more aggressively.
 
-System tries to reach the proportions of usage between RAM and Swap based on 
+System tries to reach the proportions of usage between RAM and Swap based on
 the Swappiness value:
 
 - Swappiness 0: RAM 100% – SWAP 0%
@@ -157,8 +157,8 @@ vm.swappiness=10
 ```
 
 More info:
-- [Linux Performance: Why You Should Almost Always Add Swap Space, Hyden James](https://haydenjames.io/linux-performance-almost-always-add-swap-space/)
 
+- [Linux Performance: Why You Should Almost Always Add Swap Space, Hyden James](https://haydenjames.io/linux-performance-almost-always-add-swap-space/)
 
 ## SENAITE and Zope baseline
 
@@ -195,14 +195,14 @@ latter queries against ZODB and returns back the data requested. ZEO client
 then aggressively caches the returned objects in RAM. As soon as the number of
 objects in memory reaches the limit defined by `zodb-cache-size`, ZEO client
 automatically allocates space for newest objects by removing oldest ones from
-cache. Thus, this setting allows to reduce the number of calls to ZEO server 
+cache. Thus, this setting allows to reduce the number of calls to ZEO server
 and therefore, disk reads from ZODB.
 
 Please note that the cache-size setting actually specifies the number of
 objects. This means that it might be difficult to gauge how much memory will
 actually be consumed. This can only be determined after Zope has been running
 by actually looking at ps/top output. For instance, a Sample object weights
-more in RAM than a Method object, cause the former contain more attributes, 
+more in RAM than a Method object, cause the former contain more attributes,
 etc.
 
 Also, keep in mind that `zodb-cache-size` refers to the number of objects each
@@ -221,13 +221,12 @@ requests to specialized or generalist ZEO clients is done by Haproxy. Having
 ZEO clients for different purposes means that the value for `zodb-cache-size`
 for each client might be different too.
 
-In our experience, we've found that more or less, 100k cached objects = ~5G 
-RAM.
+In our experience, we've found that 100k cached objects = ~5G RAM.
 
 - 3 generalist ZEO clients, 2 threads each = 3 * 5 * 2 = ~30 GB RAM
 - 5 specialist ZEO clients, 2 threads each = 5 * 0.5 * 2 = ~5 GB RAM
 
 The RAM consumption of other services have to be added here though (ZEOServer
 ~ 5 GB, nginx ~1 GB, kernel pages, etc.). With this configuration, we need at
-least 45 GB of RAM, but we recommend 50 GB minimum to allocate additional RAM 
+least 45 GB of RAM, but we recommend 50 GB minimum to allocate additional RAM
 for other tasks like backups, reserved clients, zeopacks, etc.

@@ -1,0 +1,30 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:browser="http://namespaces.zope.org/browser">
+
+  <!-- Package includes -->
+  <include package=".content"/>
+  <include package=".sample"/>
+  <include package=".stickers"/>
+  <include package=".theme"/>
+  <include package=".views"/>
+  <include package=".viewlets"/>
+  <include package=".whonet"/>
+
+  <!-- Static directory for js, css and image resources -->
+  <plone:static
+    directory="static"
+    type="plone"
+    name="bes.nauru.lims.static" />
+
+  <!-- Returns a JSON with active bottle-like Containers registered -->
+  <browser:page
+    for="*"
+    name="get_bottles"
+    class=".ajax.Bottles"
+    permission="zope.Public"
+    layer="bes.nauru.lims.interfaces.IBesNauruLimsLayer" />
+
+</configure>
+

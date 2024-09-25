@@ -1,0 +1,27 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+
+  <!-- After event handler for Analysis -->
+  <subscriber
+    for="bika.lims.interfaces.IAnalysis
+         Products.DCWorkflow.interfaces.IAfterTransitionEvent"
+    handler=".analysis.AfterTransitionEventHandler" />
+
+  <!-- Object created event handler for Client
+   System automatically adds an "Unknown" Contact on creation
+   https://github.com/beyondessential/pnghealth.lims/issues/22
+  -->
+  <subscriber
+    for="bika.lims.interfaces.IClient
+         zope.lifecycleevent.interfaces.IObjectCreatedEvent"
+    handler=".client.ObjectCreatedEventHandler" />
+
+  <!-- After event handler for Contact
+   If contact is an "Unknown doctor", ensures that cannot be modified
+   https://github.com/beyondessential/pnghealth.lims/issues/22
+  -->
+  <subscriber
+    for="bika.lims.interfaces.IContact
+         Products.DCWorkflow.interfaces.IAfterTransitionEvent"
+    handler=".contact.AfterTransitionEventHandler" />
+
+</configure>

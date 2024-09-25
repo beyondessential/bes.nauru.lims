@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<layers>
+
+  <!-- Remove Browser Layer -->
+  <layer name="bes.nauru.lims"
+         interface="bes.nauru.lims.interfaces.IBesNauruLimsLayer"
+         remove="True" />
+
+</layers>

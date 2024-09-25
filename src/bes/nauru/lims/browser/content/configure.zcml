@@ -1,0 +1,21 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser">
+
+  <!-- Wards view -->
+  <browser:page
+    for="bes.nauru.lims.content.wards.IWards"
+    name="view"
+    class=".wards.WardsView"
+    permission="senaite.core.permissions.ManageBika"
+    layer="bes.nauru.lims.interfaces.IBesNauruLimsLayer" />
+
+  <!-- Ward Departments view -->
+  <browser:page
+      for="bes.nauru.lims.content.warddepartments.IWardDepartments"
+      name="view"
+      class=".warddepartments.WardDepartmentsView"
+      permission="senaite.core.permissions.ManageBika"
+      layer="bes.nauru.lims.interfaces.IBesNauruLimsLayer" />
+
+</configure>

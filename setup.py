@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# This file is part of PALAU.LIMS
+# This file is part of BES.NAURU.LIMS
 #
 # Copyright 2023 Beyond Essential Systems Pty. Ltd.
 
@@ -16,11 +16,11 @@ with open("docs/changelog.rst", "r") as fh:
     long_description += fh.read()
 
 setup(
-    name="palau.lims",
+    name="bes.nauru.lims",
     version=version,
     description="SENAITE extension profile aimed for health centers at "
-                "Republic of Palau",
-    long_description=open("README.rst").read(),
+                "Republic of Nauru",
+    long_description=long_description,
     # http://pypi.python.org/pypi?:action=list_classifiers
     classifiers=[
         "Programming Language :: Python",
@@ -30,18 +30,15 @@ setup(
     keywords="",
     author="NARALABS",
     author_email="info@naralabs.com",
-    url="https://github.com/beyondessential/palau.lims",
+    url="https://github.com/beyondessential/bes.nauru.lims",
     license="GPLv2",
-    packages=find_packages("src", include=("palau*",)),
+    packages=find_packages("src", include=["bes*",]),
     package_dir={"": "src"},
-    namespace_packages=["palau"],
+    namespace_packages=["bes", "bes.nauru"],
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        "requests",
-        "senaite.ast>=1.2.0",
-        "senaite.patient>=1.5.0",
-        "senaite.storage>=2.6.0",
+        "bes.lims>=1.0.0",
         # senaite.core does no longer provides schemaextender
         # https://github.com/senaite/senaite.core/pull/1931
         "archetypes.schemaextender",

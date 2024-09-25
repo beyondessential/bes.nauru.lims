@@ -9,12 +9,12 @@ import sys
 import optparse
 from datetime import datetime
 
-SRC_DIR = '${buildout:src-dir}/src/palau'
+SRC_DIR = '${buildout:src-dir}/src/bes'
 
-YEAR_FROM = "2023"
+YEAR_FROM = "2024"
 TEMPLATE = """# -*- coding: utf-8 -*-
 #
-# This file is part of PALAU.LIMS
+# This file is part of BES.NAURU.LIMS
 #
 # Copyright {copy_years} Beyond Essential Systems Pty Ltd
 

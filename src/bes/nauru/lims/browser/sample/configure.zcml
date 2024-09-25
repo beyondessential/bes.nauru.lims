@@ -1,0 +1,21 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser">
+
+  <!-- Rejection report view -->
+  <browser:page
+      for="bika.lims.interfaces.IAnalysisRequest"
+      name="rejection"
+      class=".rejection.RejectionView"
+      permission="zope2.View"
+      layer="bes.nauru.lims.interfaces.IBesNauruLimsLayer" />
+
+  <!-- Rejection report pdf view -->
+  <browser:page
+      for="bika.lims.interfaces.IAnalysisRequest"
+      name="rejection_pdf"
+      class=".rejection.RejectionPdfView"
+      permission="zope2.View"
+      layer="bes.nauru.lims.interfaces.IBesNauruLimsLayer" />
+
+</configure>

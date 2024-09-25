@@ -3,7 +3,7 @@
 ## Introduction
 
 For best performance, the installation of a minimal Debian server is
-recommended. [Debian][debian] is a lightweight and thoroughly  tested Linux
+recommended. [Debian][debian] is a lightweight and thoroughly tested Linux
 distribution, well-known for its stability, reliability and security, mostly
 because of [Debian release life cycle][debian_releases] and
 [Debian Long Term Support (LTS)][debian_lts].
@@ -28,8 +28,8 @@ _debian-like_ system, follow the instructions on
 Otherwise, pick any of the available tools out there for different Operating
 Systems that allow burning ISO files into USB sticks.
 
-Reboot the target system on which you want to install Debian and go to
-its BIOS settings and change boot medium from Hard disk to bootable media
+Reboot the target system on which you want to install Debian and go to its BIOS
+settings and change boot medium from Hard disk to bootable media
 (like USB / DVD) if not set as the first bootable media.
 
 Once rebooted, the system will boot into the "Installation Menu" of Debian:
@@ -68,12 +68,13 @@ detailed information about all installation options available.
 Login to the system as superuser (usually `root`) and make sure that your
 ``/etc/apt/sources.list`` contains the ``bullseye/updates`` repository (this
 makes sure you always get the newest security updates), and that the
-``contrib`` and ``non-free`` repositories are enabled as some required
-packages are not in the main repository.
+``contrib`` and ``non-free`` repositories are enabled as some required packages
+are not in the main repository.
 
 ```shell
 # nano /etc/apt/sources.list
 ```
+
 ```ini
 deb http://deb.debian.org/debian/ bullseye main
 deb-src http://deb.debian.org/debian/ bullseye main
@@ -122,6 +123,7 @@ group of `sudoers`:
 ```shell
 # visudo -f /etc/sudoers.d/senaite
 ```
+
 ```ini
 # User rules for SENAITE
 senaite ALL=(ALL) NOPASSWD:ALL
@@ -142,32 +144,32 @@ time zone you want to use. The time zone naming convention usually uses a
 ```shell
 $ timedatectl list-timezones
 ```
+
 Once you identify which time zone is accurate to your location, run the
 following command as root or sudo user:
 
 ```shell
-$ sudo timedatectl set-timezone Pacific/Palau
+$ sudo timedatectl set-timezone America/Port_of_Spain
 ```
 
 To verify the change, invoke the `timedatectl` command again:
 
 ```shell
 $ timedatectl
-               Local time: Tue 2023-08-22 22:39:34 +09
-           Universal time: Tue 2023-08-22 13:39:34 UTC
-                 RTC time: Tue 2023-08-22 13:39:35
-                Time zone: Pacific/Palau (+09, +0900)
+               Local time: Wed 2023-08-23 03:52:30 AST
+           Universal time: Wed 2023-08-23 07:52:30 UTC
+                 RTC time: Wed 2023-08-23 07:52:31
+                Time zone: America/Port_of_Spain (AST, -0400)
 System clock synchronized: yes
-              NTP service: n/a
+              NTP service: active
           RTC in local TZ: no
 ```
 
-
 ## Synchronize the System Clock
 
-It is a good idea to synchronize the system clock with an [NTP (network time
-protocol)][ntp] server over the Internet. Run the following to ensure the
-system is alywas in sync.
+It is a good idea to synchronize the system clock with
+an [NTP (network time protocol)][ntp] server over the Internet. Run the
+following to ensure the system is alywas in sync.
 
 ```shell
 # apt -y install ntp
@@ -178,8 +180,8 @@ system is alywas in sync.
 The remote access to this server will be done through a
 [Secure Shell (SSH)][ssh] connection, that provides a
 [secure channel][secure_channel] over an unsecured network. While logged in as
-`root` user, install [`openssh-server`][openssh-server] in your system, if
-not yet installed, as follows:
+`root` user, install [`openssh-server`][openssh-server] in your system, if not
+yet installed, as follows:
 
 ```shell
 # apt install openssh-server
@@ -209,6 +211,7 @@ me@local:~$ ssh-copy-id -i ~/.ssh/id_rsa.pub senaite@host
 ```
 
 where:
+
 - `host`: the IP of the server we are setting up
 
 > **Note**
@@ -254,14 +257,14 @@ The recommended configuration is as follows:
   users with an authorized key. Alternatively, use `PermiRootLogin no` to
   disable remote login with root permanently.
 
-- **`PasswordAuthentication no`**: This makes it impossible  to access the
-  system without an authorized public key. User  won't be prompted for
-  password and server will deny access automatically.
+- **`PasswordAuthentication no`**: This makes it impossible to access the
+  system without an authorized public key. User won't be prompted for password
+  and server will deny access automatically.
 
 - **`StrictModes yes`**: Specifies whether sshd should check file modes and
-  ownership of	the user's files and home directory before accepting login.
-  This is normally desirable because novices sometimes accidentally leave
-  their directory or files world-writable.
+  ownership of the user's files and home directory before accepting login. This
+  is normally desirable because novices sometimes accidentally leave their
+  directory or files world-writable.
 
 - **`PubkeyAuthentication yes`**: This setting disables password-based logins,
   so only public key based logins are allowed.
@@ -319,9 +322,9 @@ senaite@Debian-bullseye-64-minimal:~$
 During the installation of the minimal server you are asked to set a hostname.
 You may have either skipped that step, or you've realized the hostname you've
 set won't work. For instance, with the SSH sessions we've done in the previous
-section, we can see the hostname is `Debian-bullseye-64-minimal`. This
-hostname does not resemble to what the server will be used for. You can change
-the hostname to e.g. `senaite-qsystem`, `senaite-psystem`, etc. as follows:
+section, we can see the hostname is `Debian-bullseye-64-minimal`. This hostname
+does not resemble to what the server will be used for. You can change the
+hostname to e.g. `senaite-qsystem`, `senaite-psystem`, etc. as follows:
 
 ```shell
 $ sudo hostnamectl set-hostname senaite-qsystem
@@ -355,8 +358,8 @@ senaite@senaite-qsystem:~$
 ## Setup ufw (Uncomplicated Firewall)
 
 [ufw (Uncomplicated Firewall)][ufw] is a program for managing a netfilter
-firewall designed to be easy to use. For this server we only want the
-following ports to be open:
+firewall designed to be easy to use. For this server we only want the following
+ports to be open:
 
 - 80: Default port for http connections
 - 443: Default port for Https connections
@@ -395,13 +398,14 @@ Status: active
 
 ## Add custom ssh motd login message
 
-By-default most Linux/Unix machine has an `/etc/motd` file that contains
-text message that will be printed when anyone login on the machine. You can
+By-default most Linux/Unix machine has an `/etc/motd` file that contains text
+message that will be printed when anyone login on the machine. You can
 optionally modify this message by editing `/etc/motd` file as follows:
 
 ```shell
 $ sudo nano /etc/motd
 ```
+
 ```
 ************************************************************************
 WARNING: Unauthorized access to this system is forbidden and will be
@@ -437,7 +441,6 @@ $ sudo chmod +x /etc/update-motd.d/20-lsb-release
 With this change, the system will display the operating system's description,
 along with current version and codename.
 
-
 ## Setup logrotate for mail
 
 System processes (e.g. cron) will keep sending emails to the local mail
@@ -466,12 +469,13 @@ configuration file `/etc/logrotate.d/mail` as follows:
 ## Add authorized RSA keys
 
 To allow users to SSH into this server or into SENAITE instances from within
-the same network through this server, you need to add their public RSA keys
-to the authorized keys file:
+the same network through this server, you need to add their public RSA keys to
+the authorized keys file:
 
 ```shell
 $ nano ~/.ssh/authorized_keys
 ```
+
 ```
 # Jordi Puiggené (Naralabs)
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDIbHWNfaomvkwZCZXCeEXrgyyVFdFuimb5gzn+qHTglu6yF2Cp84YvLDAdU0hwJbK3DDzDrGOVJS5BJoUmY1r5mi6HSndSNPDK7JRMBg0ycyhDexzwwznvtGlVW7xNwbWQrRIDDgyXBzjYQhgbCH5zPIAZBIXl+HAmi7QOEvc1BHdMiiESf5ECDdEx0SHcnbgzDpTI/DMPmjao1diWX5tqHUf3s3Bb7NQ1wnE1p6k+OuqfQDiE39h5G0ITX1+F5qGppwIF+mvn+xKrueX8fkFyG1DLwNlAFcXHFqDfW+6xTQnT6puV5M+/ksFIOou9u9zFZJU3vaLWQRGvWpd6PMATaDLixNk9SYwkdYVmz+Dv2co1HrxSkhMc32668ZngX8RAbpe5Ek9Y0EOVHKMT4NtCP0XfW7ergK+uC7DMx26dWGeB4pD/YLGu0FraRSwtsl1Zf31HMv1kpFr23fPG4Y69Wop7pQfLs6rErpIbOHbK/hRI6MSuyT+ZM3njof5oSLVJZg5IH0gasgrrM7/CW9XITM0X0zvRaTleO2ZCLmRDsGmVXCeCL83g/eIzvBSDDCbyun3tRWwEyBXkcIAEZgM5/PepfRjGgSWC9qeuVJjMtKcPASTs2D7+APp+b+5SWA97DrjJxvo3NNjzx/J0LO5L49mESA/v02naMb05jbVU8w== jp@naralabs.com (buster)
@@ -492,6 +496,7 @@ Create a jail.local file and enable your own jails:
 ```shell
 $ sudo nano /etc/fail2ban/jail.local
 ```
+
 ```ini
 [DEFAULT]
 # "ignoreip" can be a list of IP addresses, CIDR masks or DNS hosts. Fail2ban
@@ -548,6 +553,7 @@ first as follows:
 ```shell
 $ sudo nano /etc/fail2ban/filter.d/nginx-badbots.conf
 ```
+
 ```ini
 [Definition]
 
@@ -605,6 +611,7 @@ Create the `nginx-badbots.conf.template`
 ```shell
 $ sudo nano /etc/fail2ban/filter.d/nginx-badbots.conf.template
 ```
+
 ```ini
 [Definition]
 
@@ -621,6 +628,7 @@ Create a cron entry as follows:
 ```shell
 $ sudo nano /etc/cron.d/nginx-badbots
 ```
+
 ```ini
 # Update badbots every month
 0 0 1 * * wget -q -O- "https://raw.githubusercontent.com/mitchellkrogza/apache-ultimate-bad-bot-blocker/master/_generator_lists/bad-user-agents.list" | sed -E 's/\\ / /g' | sed -E 's/([.:|()+/])/\\\1/g' | tr '\n' '|' | sed -E 's/\|$//g' > /tmp/badbots.txt && awk 'BEGIN{getline l < "/tmp/badbots.txt"}/%badbots%/{gsub("%badbots%",l)}1' /etc/fail2ban/filter.d/nginx-badbots.conf.template >/etc/fail2ban/filter.d/nginx-badbots.conf && service fail2ban restart
@@ -637,12 +645,14 @@ significantly:
 ```shell
 $ sudo nano /etc/fail2ban/filter.d/wordpress.conf
 ```
+
 ```ini
 [Definition]
 failregex = ^<HOST> .* "POST .*wp-login.php
             ^<HOST> .* "POST .*xmlrpc.php
 ignoreregex =
 ```
+
 Add a jail in your fail2ban local file:
 
 ```shell
@@ -672,7 +682,6 @@ Restart fail2ban:
 $ sudo service fail2ban restart
 ```
 
-
 ## Configure static IP
 
 First, identify the ethernet interface on which we will configure static IP
@@ -682,9 +691,8 @@ address:
 $ ip -c link show
 ```
 
-Note down the Debian Linux interface name (eg. `ens192`) and type the
-following ip command to see the current IP address assigned to that network
-interface:
+Note down the Debian Linux interface name (eg. `ens192`) and type the following
+ip command to see the current IP address assigned to that network interface:
 
 ```shell
 $ ip -c addr show ens192
@@ -698,6 +706,7 @@ interface with an static IP should look similar to:
 ```shell
 $ sudo nano /etc/network/interfaces
 ```
+
 ```ini
 # The primary network interface
 auto ens192

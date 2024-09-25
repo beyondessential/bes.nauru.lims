@@ -2,38 +2,36 @@
 
 [Ansible][Ansible] is a radically simple IT automation engine that, amongst
 many other IT needs, automates application deployment. This document covers how
-to deploy SENAITE and `palau.lims` on a server by using Ansible playbook.
+to deploy this software on a server by using Ansible playbook.
 
 The Ansible playbook provided with this software has been used for the
-deployment of the [Virtual Appliance][appliance_overview] you should have 
-received along with this document. This Ansible playbook has been tested 
-successfully on a [Minimal Debian server][senaite_os].
+deployment of the Virtual Appliance you should have received along with this
+document. This Ansible playbook has been tested successfully on
+a [Minimal Debian server][senaite_os]
 
 ## Requirements
 
-A `senaite` user, and member of `sudoers` group, must be in place in the
+A `senaite` user, and member of `sudoers` group must be in place in the
 destination server. Also, SSH access to the server with this `senaite` user is
 required.
 
 ## Prepare the local environment
 
-First, clone the source code of `palau.lims` into your local machine using 
-[git][git] and go to the `ansible` directory from inside:
+First, clone the source code of `bes.nauru.lims` into your local machine
+using [git][git] and go to the `ansible` directory from inside:
 
 ```shell
 $ sudo apt install git
-$ git clone https://github.com/beyondessential/palau.lims.git
-$ cd palau.lims/ansible
+$ git clone https://github.com/naralabs/bes.nauru.lims.git
+$ cd bes.nauru.lims/ansible
 ```
 
 There are some configuration files that you might need to change in order to
 make the ansible playbook work properly with your server. Open the file
-`hosts.cfg` and apply the proper modifications regarding to the SSH connection.
+`hosts.cfg` and apply the proper modifications regarding the SSH connection.
 
 ```shell
 $ cat hosts.cfg
-```
-```ini
 [senaite_host]
 senaite ansible_ssh_host=<your_server_ip> ansible_ssh_user=senaite ansible_ssh_port=<ssh_port>
 ```
@@ -46,12 +44,12 @@ will be used by default for accessing to some building parts of the application
 stack (such as munin, haproxy, supervisor).
 
 Note that the real IP of the host to where SENAITE will be installed is defined
-in the file `hosts.cfg`. You might need to change the default host IP used by
-default in this recipe: `192.168.33.10`.
+in the file `hosts.cfg`. You might need to change the default host IP used in
+this recipe: 192.168.33.10.
 
 The file `credentials.yml` has been encrypted with a vault file. If you don't
 have received this file, please e-mail us to info@naralabs.com with the subject
-"Ansible vault request: palau.lims".
+"Ansible vault request: bes.nauru.lims".
 
 Install ansible and python in your operating system:
 
@@ -59,7 +57,7 @@ Install ansible and python in your operating system:
 $ sudo apt install ansible python
 ```
 
-Without leaving the `ansible` directory from `palau.lims`, check that
+Without leaving the `ansible` directory from `bes.nauru.lims`, check that
 everything is in place, and you are able to reach the server with Ansible:
 
 ```shell
@@ -123,27 +121,27 @@ Before running the Ansible playbook, please be sure you've copied the
 file is not provided by default in the repository for security reasons.
 
 To run the Ansible playbook, type the following command without leaving the
-`ansible` directory from inside `palau.lims` source code:
+`ansible` directory from inside `bes.nauru.lims` source code:
 
-```shell
+```sh
 $ ansible-playbook -vv -i hosts.cfg playbook.yml --vault-password-file vault.txt
 ```
 
 The system will automatically install everything in the server. It also
 generates an SSH key that will use for the automatic download of the latest
-source code of `palau.lims`. The following message will appear:
+source code of bes.nauru.lims. The following message will appear:
 
 ```
 TASK [Wait for user to copy SSH public key] ******************************************************************************************
-task path: /home/johndoe/palau.lims/ansible/custom_pre.yml:35
+task path: /home/johndoe/bes.nauru.lims/ansible/custom_pre.yml:35
 [Wait for user to copy SSH public key]
 Please, add the SSH public key above to the GitHub account ...:
 ```
 
-If you don't have admin rights for `palau.lims` repository, please e-mail the
-output to info@naralabs.com and Naralabs will add this public SSH key to the
-source code repository and notify back to you. Press enter to resume the
-process as soon as you receive our confirmation that the deployment key has
+If you don't have admin rights for bes.nauru.lims repository, please
+e-mail the output to info@naralabs.com and Naralabs will add this public SSH
+key to the source code repository and notify back to you. Press enter to resume
+the process as soon as you receive our confirmation that the deployment key has
 been added to the repository.
 
 It is strongly recommended to restart nginx, haproxy and supervisor on the
@@ -163,7 +161,7 @@ framework.
 
 Login to the host through SSH and grab the Zope admin user credentials:
 
-```shell
+```sh
 $ cat senaite/live.cfg | grep "user="
 ```
 
@@ -189,8 +187,8 @@ You can log in with the same credentials you've used previously for the site
 creation. Go to the add-ons installation page thereafter:
 https://192.168.33.10/prefs_install_products_form
 
-If not yet activated, press the button "Install" above "palau.lims" to install 
-the SENAITE extension.
+If not yet activated, press the button "Install" above "bes.nauru.lims" to
+install the SENAITE extension.
 
 ## Troubleshooting
 
@@ -211,15 +209,13 @@ $ ansible-playbook -vv -i hosts.cfg playbook.yml --vault-password-file vault.txt
 
 I get this message in the terminal:
 
-```
-perl: warning: Setting locale failed.
-perl: warning: Please check that your locale settings:
-        LANGUAGE = "en_US:en",
-        LC_ALL = (unset),
-        LC_MESSAGES = "en_US.UTF-8",
-        LANG = "en_US.UTF-8"
-are supported and installed on your system.
-```
+    perl: warning: Setting locale failed.
+    perl: warning: Please check that your locale settings:
+            LANGUAGE = "en_US:en",
+            LC_ALL = (unset),
+            LC_MESSAGES = "en_US.UTF-8",
+            LANG = "en_US.UTF-8"
+        are supported and installed on your system.
 
 See this link for a solution:
 https://askubuntu.com/questions/162391/how-do-i-fix-my-locale-issue
@@ -242,10 +238,7 @@ Also see this issue: https://github.com/senaite/senaite.core/issues/861
 
 Change the permissions on the `eggs` directory:
 
-```shell
-$ sudo chmod -R ug+rwX,o-rwx /home/senaite/buildout-cache/eggs
-```
-    
+    sudo chmod -R ug+rwX,o-rwx /home/senaite/buildout-cache/eggs
 
 And rerun the Ansible playbook.
 
@@ -313,7 +306,7 @@ IOError: [Errno 13] Permission denied: '/home/senaite/python2.7/lib/python2.7/si
 Change the permissions of the pip package contents:
 
 ```shell
-$ sudo chmod -R +r /home/senaite/python2.7/lib/python2.7/site-packages
+sudo chmod -R +r /home/senaite/python2.7/lib/python2.7/site-packages
 ```
 
 And rerun the Ansible playbook.
@@ -322,4 +315,3 @@ And rerun the Ansible playbook.
 [senaite_os]: senaite_os.md
 [Ansible]: https://www.ansible.com
 [git]: https://git-scm.com/
-[appliance_overview]: appliance_overview.md

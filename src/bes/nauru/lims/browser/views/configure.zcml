@@ -1,0 +1,29 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser">
+
+  <!-- Sample view -->
+  <browser:page
+      for="bika.lims.interfaces.IAnalysisRequest"
+      name="base_view"
+      class=".sample.SampleView"
+      permission="senaite.core.permissions.ManageAnalysisRequests"
+      layer="bes.nauru.lims.interfaces.IBesNauruLimsLayer" />
+
+  <!-- AST results entry in Sample view -->
+  <browser:page
+      for="bika.lims.interfaces.IAnalysisRequest"
+      name="table_ast_analyses"
+      class=".astresults.ManageASTResultsView"
+      permission="senaite.core.permissions.ManageAnalysisRequests"
+      layer="bes.nauru.lims.interfaces.IBesNauruLimsLayer" />
+
+  <!-- End-point for the addition of a Panel to the Sample -->
+  <browser:page
+    for="bika.lims.interfaces.IAnalysisRequest"
+    name="add_ast_panel"
+    class=".addpanel.AddPanelView"
+    permission="senaite.core.permissions.ManageAnalysisRequests"
+    layer="bes.nauru.lims.interfaces.IBesNauruLimsLayer" />
+
+</configure>

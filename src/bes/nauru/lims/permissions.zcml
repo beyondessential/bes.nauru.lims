@@ -1,0 +1,20 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+
+  <!-- Add Permissions -->
+  <permission id="bes.nauru.lims.permissions.AddWard" title="bes.nauru.lims: Add Ward"/>
+  <permission id="bes.nauru.lims.permissions.AddWardDepartment" title="bes.nauru.lims: Add Ward Department"/>
+
+  <!-- Field Permissions (Sample, aka AnalysisRequest) -->
+  <permission id="bes.nauru.lims.permissions.FieldEditBottles" title="bes.nauru.lims: Field: Edit Bottles"/>
+  <permission id="bes.nauru.lims.permissions.FieldEditClinicalInformation" title="bes.nauru.lims: Field: Edit Clinical Information"/>
+  <permission id="bes.nauru.lims.permissions.FieldEditCurrentAntibiotics" title="bes.nauru.lims: Field: Edit Current Antibiotics"/>
+  <permission id="bes.nauru.lims.permissions.FieldEditVolume" title="bes.nauru.lims: Field: Edit Volume" />
+  <permission id="bes.nauru.lims.permissions.FieldEditWard" title="bes.nauru.lims: Field: Edit Ward"/>
+  <permission id="bes.nauru.lims.permissions.FieldEditWardDepartment" title="bes.nauru.lims: Field: Edit Ward Department"/>
+  <permission id="bes.nauru.lims.permissions.FieldEditLocation" title="bes.nauru.lims: Field: Edit Location"/>
+  <permission id="bes.nauru.lims.permissions.FieldEditDateOfAdmission" title="bes.nauru.lims: Field: Edit Date Of Admission"/>
+
+  <!-- Transition Permissions -->
+  <permission id="bes.nauru.lims.permissions.TransitionCreateSupplementary" title="bes.nauru.lims: Transition: Create Supplementary"/>
+
+</configure>

@@ -1,0 +1,11 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:monkey="http://namespaces.plone.org/monkey">
+
+  <!-- update_patient subscriber, so Patients are created even if Temp MRN -->
+  <monkey:patch
+      class="senaite.patient.subscribers.analysisrequest"
+      original="update_patient"
+      replacement=".analysisrequest.update_patient" />
+
+</configure>

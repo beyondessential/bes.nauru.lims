@@ -1,8 +1,7 @@
 # Setup a development environment
 
-
-SENAITE is an Add-on for the [Plone Content Management Framework][PLONE] and the
-installation instructions depend therefore mostly on the successful
+SENAITE is an Add-on for the [Plone Content Management Framework][PLONE] and
+the installation instructions depend therefore mostly on the successful
 [installation of Plone][PLONE-installation].
 
 ## Operating system
@@ -13,17 +12,16 @@ via [Homebrew][HOMEBREW].
 
 In this secion we will mostly use **Ubuntu 18.04 LTS** as reference system.
 
-The installation on other Linux distributions, MacOS or Windows is not covered here.
-
+The installation on other Linux distributions, MacOS or Windows is not covered
+here.
 
 ## A note about Versions
 
-The current codebase of SENAITE is at the moment only compatible with the latest
-version 5 of Plone.
+The current codebase of SENAITE is at the moment only compatible with the
+latest version 5 of Plone.
 
 **☝️Note:**
 **This version of Plone works only with [Python][PYTHON] 2.x.**
-
 
 ## Python
 
@@ -37,11 +35,10 @@ libraries is that it might get upgraded by the system and get incompatible.
 Therefore, it is better to setup a virtual Python environment with one of the
 following tools:
 
-  - Virtualenv: <https://pypi.org/project/virtualenv>
-  - Miniconda: <https://conda.io/miniconda.html>
+- Virtualenv: <https://pypi.org/project/virtualenv>
+- Miniconda: <https://conda.io/miniconda.html>
 
 In this manual we will use **Miniconda**.
-
 
 ## Create a new User
 
@@ -58,7 +55,6 @@ $ sudo su - senaite
 $ whoami
 senaite
 ```
-
 
 ## Miniconda
 
@@ -100,7 +96,6 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
 
-
 ## Install System dependencies
 
 Install the required dependencies for SENAITE:
@@ -111,8 +106,8 @@ $ sudo apt install python2.7 python2.7-dev
 $ sudo apt install libxml2 libxml2-dev libxslt1.1 libxslt1-dev
 $ sudo apt install libffi-dev libcairo2 libpango-1.0-0 libgdk-pixbuf2.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0
 $ sudo apt install zlib1g zlib1g-dev
+$ sudo apt install libjpeg-dev
 ```
-
 
 ## Download the Plone unified installer
 
@@ -166,16 +161,15 @@ eggs =
 ...
 ```
 
+Add `bes.nauru.lims`, `plone.reload` and `Products.PrintingMailHost` to
+the `eggs` section of the file:
 
-Add `palau.lims`, `plone.reload` and `Products.PrintingMailHost` to the `eggs` 
-section of the file:
-
-```config
+```ini
 [buildout]
 ...
 eggs =
     ...
-    palau.lims
+    bes.nauru.lims
     plone.reload
     Products.PrintingMailHost
 
@@ -185,31 +179,31 @@ zcml =
 
 Add a `develop` and `sources` sections after `eggs` section:
 
-```config
+```ini
 [buildout]
 ...
 eggs =
     ...
-    palau.lims
+    bes.nauru.lims
     plone.reload
     Products.PrintingMailHost
 
 develop =
-    src/palau.lims
+    src/bes.nauru.lims
     src/senaite.core
-    src/senaite.core.listing
-    src/senaite.core.spotlight
-    src/senaite.core.supermodel
+    src/senaite.app.listing
+    src/senaite.app.spotlight
+    src/senaite.app.supermodel
     src/senaite.impress
     src/senaite.jsonapi
     src/senaite.lims
 
 [sources]
-palau.lims = git git@github.com:beyondessential/palau.lims.git branch=master
+bes.nauru.lims = git git@github.com:naralabs/bes.nauru.lims.git branch=master
 senaite.core = git git@github.com:senaite/senaite.core.git branch=2.x
-senaite.core.listing = git git@github.com:senaite/senaite.core.listing.git branch=2.x
-senaite.core.spotlight = git git@github.com:senaite/senaite.core.spotlight.git branch=2.x
-senaite.core.supermodel = git git@github.com:senaite/senaite.core.supermodel.git branch=2.x
+senaite.app.listing = git git@github.com:senaite/senaite.app.listing.git branch=2.x
+senaite.app.spotlight = git git@github.com:senaite/senaite.app.spotlight.git branch=2.x
+senaite.app.supermodel = git git@github.com:senaite/senaite.app.supermodel.git branch=2.x
 senaite.impress = git git@github.com:senaite/senaite.impress.git branch=2.x
 senaite.jsonapi = git git@github.com:senaite/senaite.jsonapi.git branch=2.x
 senaite.lims = git git@github.com:senaite/senaite.lims.git branch=2.x
@@ -220,27 +214,19 @@ zcml =
 
 Modify the `versions` section of the file as follows:
 
-```shell
+```ini
 [versions]
 zc.buildout =
 setuptools =
-#Pillow = 5.1.0
-#cssselect2 = 0.2.2
-#soupsieve = 1.9.5
-
-#buildout.sanitycheck = 1.0.2
-#collective.recipe.backup = 4.0
-#plone.recipe.unifiedinstaller = 4.3.2
 ```
 
 **☝️Note:**
 The version unpinning of `zc.buildout` and `setuptools` is important!
 
-
 ### Upgrade pip, setuptools and zc.buildout
 
-We need to ensure that `pip`, `setuptools`, and `zc.buildout` are available in a
-compatible version:
+We need to ensure that `pip`, `setuptools`, and `zc.buildout` are available in
+a compatible version:
 
 Create a `requirements.txt` file:
 
@@ -253,7 +239,8 @@ pip==19.3.1
 EOF
 ```
 
-Install the requirements with the `pip` command of the local Python environment:
+Install the requirements with the `pip` command of the local Python
+environment:
 
 ```shell
 $ which pip
@@ -263,7 +250,7 @@ $ pip install -r requirements.txt
 ```
 
 **☝️Note:**
-A wrong version of `setuptools` can lead to the infamous 
+A wrong version of `setuptools` can lead to the infamous
 [Error while buildout: There is a version conflict. We already have: UNKNOWN 0.0.0](https://github.com/senaite/senaite.lims/issues/106)
 
 Re-run the `buildout` script:
@@ -280,7 +267,6 @@ $ PYTHONHTTPSVERIFY=0 buildout
 - http://www.buildout.org/en/latest/
 - https://setuptools.readthedocs.io/en/latest
 - https://docs.conda.io/en/latest/miniconda.html
-
 
 ## Starting SENAITE
 
@@ -299,19 +285,20 @@ To stop the server, you can press `CTRL+C` on your keyboard.
 You can also start SENAITE in the background (production) mode with the command
 `bin/instance start` and stop it again with `bin/instance stop`.
 
-
-This will print several logs to the terminal and notifies when the server is ready with the line:
+This will print several logs to the terminal and notifies when the server is
+ready with the line:
 
 ```log
 2019-09-14 09:59:44 INFO Zope Ready to handle requests
 ```
 
-Open a browser (Safari/Chrome/FireFox ...) and navigate to http://localhost:8080
+Open a browser (Safari/Chrome/FireFox) and navigate to http://localhost:8080
 and log in with `admin:admin` to proceed to the next page.
 
-You can continue with the default settings and press the *Install SENAITE LIMS* button.
-After a few moments, SENAITE should be installed and the dashboard view appears.
-Go to "Site Setup > Add ons", select `PALAU LIMS` and press install.
+You can continue with the default settings and press the *Install SENAITE LIMS*
+button. After a few moments, SENAITE should be installed and the dashboard view
+appears. Go to "Site Setup > Add ons", select `NAURU LIMS` and press
+install.
 
 
 [PLONE]: https://plone.org  "The Ultimate Enterprise CMS"

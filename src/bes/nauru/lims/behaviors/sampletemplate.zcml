@@ -1,0 +1,38 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:monkey="http://namespaces.plone.org/monkey">
+
+  <plone:behavior
+      name="bes.nauru.lims.behavior.sampletemplate"
+      title="ExtendedSampleTemplate"
+      description="Extends SampleTemplate with additional fields"
+      provides=".sampletemplate.IExtendedSampleTemplateBehavior"
+      factory=".sampletemplate.ExtendedSampleTemplate"
+      for="senaite.core.interfaces.ISampleTemplate" />
+
+  <monkey:patch
+      class="senaite.core.content.sampletemplate.SampleTemplate"
+      original="getMinimumVolume"
+      ignoreOriginal="True"
+      replacement=".sampletemplate.getMinimumVolume"/>
+
+  <monkey:patch
+      class="senaite.core.content.sampletemplate.SampleTemplate"
+      original="setMinimumVolume"
+      ignoreOriginal="True"
+      replacement=".sampletemplate.setMinimumVolume"/>
+
+  <monkey:patch
+      class="senaite.core.content.sampletemplate.SampleTemplate"
+      original="getInsufficientVolumeText"
+      ignoreOriginal="True"
+      replacement=".sampletemplate.getInsufficientVolumeText"/>
+
+  <monkey:patch
+      class="senaite.core.content.sampletemplate.SampleTemplate"
+      original="setInsufficientVolumeText"
+      ignoreOriginal="True"
+      replacement=".sampletemplate.setInsufficientVolumeText"/>
+
+</configure>
