@@ -30,6 +30,7 @@ from senaite.ast.config import AST_CALCULATION_TITLE
 from senaite.ast.config import IDENTIFICATION_KEY
 from senaite.ast.config import SERVICE_CATEGORY
 from senaite.ast.config import SERVICES_SETTINGS
+from senaite.ast.setuphandlers import revoke_edition_permissions
 from senaite.core.api import workflow as wapi
 from senaite.core.catalog import ANALYSIS_CATALOG
 from senaite.core.catalog import SAMPLE_CATALOG
@@ -295,6 +296,17 @@ def import_content_structure(portal):
     logger.info("Importing {} ...".format(tarball))
     tarball_file = open(tarball, mode="r")
     portal_setup.manage_importTarball(tarball_file, purge_old=False)
+
+    # revoke permissions for ast-like analyses
+    revoke_edition_permissions(portal)
+
+    # set default passwords for default users
+    user_ids = ["labman", "labclerk", "analyst"]
+    user_manager = portal.acl_users.source_users
+    for user_id in user_ids:
+        password = user_id
+        user_manager.doChangeUser(user_id, password)
+
     logger.info("Importing content structure [DONE]")
 
 
