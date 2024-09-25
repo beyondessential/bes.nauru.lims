@@ -199,7 +199,7 @@ develop =
     src/senaite.lims
 
 [sources]
-bes.nauru.lims = git git@github.com:naralabs/bes.nauru.lims.git branch=master
+bes.nauru.lims = git git@github.com:beyondessential/bes.nauru.lims.git branch=master
 senaite.core = git git@github.com:senaite/senaite.core.git branch=2.x
 senaite.app.listing = git git@github.com:senaite/senaite.app.listing.git branch=2.x
 senaite.app.spotlight = git git@github.com:senaite/senaite.app.spotlight.git branch=2.x

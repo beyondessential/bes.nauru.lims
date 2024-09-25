@@ -22,7 +22,7 @@ using [git][git] and go to the `ansible` directory from inside:
 
 ```shell
 $ sudo apt install git
-$ git clone https://github.com/naralabs/bes.nauru.lims.git
+$ git clone https://github.com/beyondessential/bes.nauru.lims.git
 $ cd bes.nauru.lims/ansible
 ```
 

@@ -77,7 +77,7 @@ $ git clone https://github.com/YOUR_USERNAME/bes.nauru.lims
 
 ```shell
 $ cd bes.nauru.lims
-$ git remote add upstream https://github.com/naralabs/bes.nauru.lims.git
+$ git remote add upstream https://github.com/beyondessential/bes.nauru.lims.git
 ```
 
 To verify the new upstream repository you have specified for your fork, type
@@ -86,10 +86,10 @@ for the original repository as `upstream`:
 
 ```
 $ git remote -v
-origin    https://github.com/naralabs/bes.nauru.lims.git (fetch)
-origin    https://github.com/naralabs/bes.nauru.lims.git (push)
-upstream  https://github.com/naralabs/bes.nauru.lims.git (fetch)
-upstream  https://github.com/naralabs/bes.nauru.lims.git (push)
+origin    https://github.com/beyondessential/bes.nauru.lims.git (fetch)
+origin    https://github.com/beyondessential/bes.nauru.lims.git (push)
+upstream  https://github.com/beyondessential/bes.nauru.lims.git (fetch)
+upstream  https://github.com/beyondessential/bes.nauru.lims.git (push)
 ```
 
 ### Start working on your contribution
@@ -176,14 +176,14 @@ For more details about Git usage, please check out Chapters 1 and 2 from
 
 
 [code of conduct]: code_of_conduct.md
-[issues]: https://github.com/naralabs/bes.nauru.lims/issues
-[new issue]: https://github.com/naralabs/bes.nauru.lims/issues/new
-[labels]: https://github.com/naralabs/bes.nauru.lims/labels
+[issues]: https://github.com/beyondessential/bes.nauru.lims/issues
+[new issue]: https://github.com/beyondessential/bes.nauru.lims/issues/new
+[labels]: https://github.com/beyondessential/bes.nauru.lims/labels
 [join]: https://github.com/join
-[fork]: https://github.com/naralabs/bes.nauru.lims/fork
+[fork]: https://github.com/beyondessential/bes.nauru.lims/fork
 [how to write good commit messages]: https://chris.beams.io/posts/git-commit/
 [merging vs rebasing]: https://www.atlassian.com/git/tutorials/merging-vs-rebasing
-[compare]: https://github.com/naralabs/bes.nauru.lims/compare/
+[compare]: https://github.com/beyondessential/bes.nauru.lims/compare/
 [plone's python styleguide]: https://docs.plone.org/develop/styleguide/python.html
 [changelog]: changelog.rst
 [git book]: https://git-scm.com/book/en
