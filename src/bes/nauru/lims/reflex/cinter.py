@@ -75,7 +75,7 @@ class CultureInterpretationSubmitAdapter(ReflexTestingBaseAdapter):
 
     def create_organism_identification(self):
         """Creates a new Microorganism identification test (senaite.ast) in the
-        same samples as the current analysis. The result options of the new test
+        same samples as the current analysis. Result options of the new test
         are populated with the list (names) of the organisms that are available
         in the system and the control input is set to "multiselect".
         """

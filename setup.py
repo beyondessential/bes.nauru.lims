@@ -32,7 +32,7 @@ setup(
     author_email="info@naralabs.com",
     url="https://github.com/beyondessential/bes.nauru.lims",
     license="GPLv2",
-    packages=find_packages("src", include=["bes*",]),
+    packages=find_packages("src", include=["bes*", ]),
     package_dir={"": "src"},
     namespace_packages=["bes", "bes.nauru"],
     include_package_data=True,

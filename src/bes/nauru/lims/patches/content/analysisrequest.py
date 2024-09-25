@@ -4,6 +4,7 @@
 #
 # Copyright 2024 Beyond Essential Systems Pty Ltd
 
+
 def getRawWard(self):
     """Returns the UID of the Ward assigned to the sample, if any
     """

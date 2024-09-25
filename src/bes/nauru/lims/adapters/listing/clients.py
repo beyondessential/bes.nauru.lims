@@ -4,14 +4,12 @@
 #
 # Copyright 2024 Beyond Essential Systems Pty Ltd
 
-import collections
-
+from bes.nauru.lims import messageFactory as _
+from bika.lims import api
 from senaite.app.listing.interfaces import IListingView
 from senaite.app.listing.interfaces import IListingViewAdapter
 from zope.component import adapter
 from zope.interface import implementer
-from bes.nauru.lims import messageFactory as _
-from bika.lims import api
 
 
 @adapter(IListingView)

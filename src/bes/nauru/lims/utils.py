@@ -78,8 +78,8 @@ def is_unknown_doctor(contact):
 def to_utf8(data):
     """Encodes the data to utf-8
     """
-    if isinstance(data, unicode):
-        return data.encode("utf-8")
+    if api.is_string(data):
+        return api.to_utf8(data)
     if isinstance(data, list):
         return [to_utf8(item) for item in data]
     if isinstance(data, dict):
@@ -170,7 +170,7 @@ def sniff_csv_dialect(infile, default=None):
         with open(infile, 'rb') as f:
             dialect = csv.Sniffer().sniff(f.readline())
         return dialect
-    except:
+    except csv.Error:
         if default:
             return csv.register_dialect("dummy", **default)
         return None
