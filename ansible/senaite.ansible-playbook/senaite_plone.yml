@@ -10,7 +10,7 @@
     plone_config: "{{ senaite_plone_config[0] }}"
 
 - name: "Run buildout - output goes to {{ plone_instance_home }}/buildout.log"
-  shell: "bin/buildout -c live.cfg > buildout.log 2>&1"
+  shell: "bin/buildout -c {{ plone_buildout_cfg }} > buildout.log 2>&1"
   args:
     chdir: "{{ plone_instance_home }}"
   become_user: "{{ plone_buildout_user }}"

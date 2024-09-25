@@ -3,6 +3,10 @@
 - debug:
     msg: "******************** CUSTOM PRE [START] *******************"
 
+- name: "Cleanup nginx's enabled sites, if any"
+  shell: "rm -f /etc/nginx/sites-enabled/*"
+  become: yes
+
 - name: "Generate deploy key for bes.nauru.lims repos"
   user:
     name: "{{user}}"
@@ -41,6 +45,7 @@
   shell: "ssh -T -i ~/.ssh/{{ ssh_key_filename }} -oStrictHostKeyChecking=accept-new git@ssh.github.com"
   become_user: "{{ user }}"
   ignore_errors: "yes"
+  loop: "{{ ssh_keys }}"
   tags:
     - senaite-custom
 

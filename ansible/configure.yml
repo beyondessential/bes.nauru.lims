@@ -14,6 +14,9 @@ plone_instance_name: "senaite"
 # SENAITE's Site id (used by nginx for rev-proxy)
 plone_site_id: "senaite"
 
+# Base buildout cfg
+plone_buildout_cfg: live.base.cfg
+
 # Default number of objects zeo clients will keep in cache
 plone_zodb_cache_size: "50000"
 

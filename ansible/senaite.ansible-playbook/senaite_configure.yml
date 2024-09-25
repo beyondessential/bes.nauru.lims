@@ -281,6 +281,7 @@ plone_buildout_cache_url: http://dist.plone.org/release/{{ plone_version }}/buil
 plone_group: senaite
 plone_buildout_user: senaite
 plone_daemon_user: senaite_daemon
+plone_buildout_cfg: live.cfg
 plone_target_path: "/home/{{ plone_buildout_user }}"
 plone_var_path: "/home/{{ plone_buildout_user }}/data"
 plone_backup_path: no
