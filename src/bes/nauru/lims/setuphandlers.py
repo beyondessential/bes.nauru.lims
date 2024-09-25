@@ -5,10 +5,6 @@
 # Copyright 2024 Beyond Essential Systems Pty Ltd
 
 import os
-
-from bika.lims import api
-from bika.lims.browser.analysisrequest.add2 import AR_CONFIGURATION_STORAGE
-from BTrees.OOBTree import OOBTree
 from bes.nauru.lims import logger
 from bes.nauru.lims import permissions
 from bes.nauru.lims import PRODUCT_NAME
@@ -23,15 +19,18 @@ from bes.nauru.lims.config import REJECTION_REASONS
 from bes.nauru.lims.config import SAMPLE_ADD_FIELDS_TO_HIDE
 from bes.nauru.lims.config import SAMPLE_FIELDS_ORDER
 from bes.nauru.lims.config import SETUP_SETTINGS
+from bika.lims import api
+from bika.lims.browser.analysisrequest.add2 import AR_CONFIGURATION_STORAGE
+from BTrees.OOBTree import OOBTree
 from plone import api as ploneapi
 from plone.registry.interfaces import IRegistry
-from Products.DCWorkflow.Guard import Guard
 from senaite.abx.interfaces import IAntibiotic
 from senaite.abx.interfaces import IAntibioticClass
 from senaite.ast.config import AST_CALCULATION_TITLE
 from senaite.ast.config import IDENTIFICATION_KEY
 from senaite.ast.config import SERVICE_CATEGORY
 from senaite.ast.config import SERVICES_SETTINGS
+from senaite.core.api import workflow as wapi
 from senaite.core.catalog import ANALYSIS_CATALOG
 from senaite.core.catalog import SAMPLE_CATALOG
 from senaite.core.catalog import SETUP_CATALOG
@@ -94,7 +93,6 @@ WORKFLOWS_TO_UPDATE = {
     SAMPLE_WORKFLOW: {
         "states": {
             "verified": {
-                "preserve_transitions": True,
                 "permissions": {
                     # Field permissions (read-only)
                     permissions.FieldEditBottles: (),
@@ -107,8 +105,7 @@ WORKFLOWS_TO_UPDATE = {
                 }
             },
             "published": {
-                "preserve_transitions": True,
-                "transitions": ("create_supplementary",),
+                "transitions": ["create_supplementary", ],
                 "permissions": {
                     # Field permissions (read-only)
                     permissions.FieldEditBottles: (),
@@ -122,7 +119,6 @@ WORKFLOWS_TO_UPDATE = {
                 }
             },
             "rejected": {
-                "preserve_transitions": True,
                 "permissions": {
                     # Field permissions (read-only)
                     permissions.FieldEditBottles: (),
@@ -137,7 +133,6 @@ WORKFLOWS_TO_UPDATE = {
                 }
             },
             "invalid": {
-                "preserve_transitions": True,
                 "permissions": {
                     # Field permissions (read-only)
                     permissions.FieldEditBottles: (),
@@ -151,7 +146,6 @@ WORKFLOWS_TO_UPDATE = {
                 }
             },
             "cancelled": {
-                "preserve_transitions": True,
                 "permissions": {
                     # Field permissions (read-only)
                     permissions.FieldEditBottles: (),
@@ -171,9 +165,9 @@ WORKFLOWS_TO_UPDATE = {
                 "new_state": "",
                 "action": "Create supplementary test",
                 "guard": {
-                    "guard_permissions": permissions.TransitionCreateSupplementary,
+                    "guard_permissions": permissions.TransitionCreateSupplementary,  # noqa
                     "guard_roles": "",
-                    "guard_expr": "python:here.guard_handler('create_supplementary')",
+                    "guard_expr": "python:here.guard_handler('create_supplementary')",  # noqa
                 }
             }
         }
@@ -615,118 +609,8 @@ def setup_workflows(portal):
     """
     logger.info("Setup workflows ...")
     for wf_id, settings in WORKFLOWS_TO_UPDATE.items():
-        update_workflow(portal, wf_id, settings)
+        wapi.update_workflow(wf_id, **settings)
     logger.info("Setup workflows [DONE]")
-
-
-def update_workflow(portal, workflow_id, settings):
-    """Updates the workflow with workflow_id with the settings passed-in
-    """
-    logger.info("Updating workflow '{}' ...".format(workflow_id))
-    wf_tool = api.get_tool("portal_workflow")
-    workflow = wf_tool.getWorkflowById(workflow_id)
-    if not workflow:
-        logger.warn("Workflow '{}' not found [SKIP]".format(workflow_id))
-    states = settings.get("states", {})
-    for state_id, values in states.items():
-        update_workflow_state(workflow, state_id, values)
-
-    transitions = settings.get("transitions", {})
-    for transition_id, values in transitions.items():
-        update_workflow_transition(workflow, transition_id, values)
-
-
-def update_workflow_state(workflow, status_id, settings):
-    """Updates the status of a workflow in accordance with settings passed-in
-    """
-    logger.info("Updating workflow '{}', status: '{}' ..."
-                .format(workflow.id, status_id))
-
-    # Create the status (if does not exist yet)
-    new_status = workflow.states.get(status_id)
-    if not new_status:
-        workflow.states.addState(status_id)
-        new_status = workflow.states.get(status_id)
-
-    # Set basic info (title, description, etc.)
-    new_status.title = settings.get("title", new_status.title)
-    new_status.description = settings.get("description", new_status.description)
-
-    # Set transitions
-    trans = settings.get("transitions", ())
-    if settings.get("preserve_transitions", False):
-        trans = tuple(set(new_status.transitions+trans))
-    new_status.transitions = trans
-
-    # Set permissions
-    update_workflow_state_permissions(workflow, new_status, settings)
-
-
-def update_workflow_state_permissions(workflow, status, settings):
-    """Updates the permissions of a workflow status in accordance with the
-    settings passed-in
-    """
-    # Copy permissions from another state?
-    permissions_copy_from = settings.get("permissions_copy_from", None)
-    if permissions_copy_from:
-        logger.info("Copying permissions from '{}' to '{}' ..."
-                    .format(permissions_copy_from, status.id))
-        copy_from_state = workflow.states.get(permissions_copy_from)
-        if not copy_from_state:
-            logger.info("State '{}' not found [SKIP]".format(copy_from_state))
-        else:
-            for perm_id in copy_from_state.permissions:
-                perm_info = copy_from_state.getPermissionInfo(perm_id)
-                acquired = perm_info.get("acquired", 1)
-                roles = perm_info.get("roles", acquired and [] or ())
-                logger.info("Setting permission '{}' (acquired={}): '{}'"
-                            .format(perm_id, repr(acquired), ', '.join(roles)))
-                status.setPermission(perm_id, acquired, roles)
-
-    # Override permissions
-    logger.info("Overriding permissions for '{}' ...".format(status.id))
-    state_permissions = settings.get('permissions', {})
-    if not state_permissions:
-        logger.info(
-            "No permissions set for '{}' [SKIP]".format(status.id))
-        return
-    for permission_id, roles in state_permissions.items():
-        if isinstance(roles, list):
-            acq = 1
-        elif isinstance(roles, tuple):
-            acq = 0
-        else:
-            raise AttributeError("No valid perm: {}".format(permission_id))
-        logger.info("Setting permission '{}' (acquired={}): '{}'"
-                    .format(permission_id, repr(acq),
-                            ', '.join(roles)))
-        # Check if this permission is defined globally for this workflow
-        if permission_id not in workflow.permissions:
-            workflow.permissions = workflow.permissions + (permission_id, )
-        status.setPermission(permission_id, acq, roles)
-
-
-def update_workflow_transition(workflow, transition_id, settings):
-    """Updates the workflow transition in accordance with settings passed-in
-    """
-    logger.info("Updating workflow '{}', transition: '{}'"
-                .format(workflow.id, transition_id))
-    if transition_id not in workflow.transitions:
-        workflow.transitions.addTransition(transition_id)
-    transition = workflow.transitions.get(transition_id)
-    transition.setProperties(
-        title=settings.get("title"),
-        new_state_id=settings.get("new_state"),
-        after_script_name=settings.get("after_script", ""),
-        actbox_name=settings.get("action", settings.get("title"))
-    )
-    guard = transition.guard or Guard()
-    guard_props = {"guard_permissions": "",
-                   "guard_roles": "",
-                   "guard_expr": ""}
-    guard_props = settings.get("guard", guard_props)
-    guard.changeFromProperties(guard_props)
-    transition.guard = guard
 
 
 def setup_impress_settings(portal):
