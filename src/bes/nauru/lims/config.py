@@ -9,8 +9,6 @@ from Products.Archetypes import DisplayList
 
 UNKNOWN_DOCTOR_FULLNAME = "Unknown doctor"
 
-CULTURE_INTERPRETATION_KEYWORD = "CINTER"
-
 LANG_SETTINGS = [
     # Site language
     ("default_language", "en"),
