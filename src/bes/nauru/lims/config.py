@@ -27,6 +27,8 @@ SETUP_SETTINGS = [
     ("RestrictWorksheetUsersAccess", True),
     ("AllowToSubmitNotAssigned", True),
     ("RestrictWorksheetManagement", True),
+    # Enable global Audit Log
+    ("EnableGlobalAuditlog", False),
     # Accounting
     ("ShowPrices", False),
     ("Currency", "AUD"),
