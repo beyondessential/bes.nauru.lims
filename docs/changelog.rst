@@ -4,4 +4,4 @@ Changelog
 1.0.0 (Unreleased)
 ------------------
 
-- First version
+- #8 Port whonet report to bes.lims
