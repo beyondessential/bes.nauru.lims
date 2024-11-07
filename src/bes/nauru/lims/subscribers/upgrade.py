@@ -22,7 +22,6 @@ def afterUpgradeStepHandler(event):  # noqa CamelCase
     setup = portal.portal_setup  # noqa
 
     profile = "profile-{0}:default".format(PRODUCT_NAME)
-    setup.runImportStepFromProfile(profile, "actions")
     setup.runImportStepFromProfile(profile, "typeinfo")
     setup.runImportStepFromProfile(profile, "rolemap")
     setup.runImportStepFromProfile(profile, "workflow")
