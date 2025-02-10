@@ -201,7 +201,7 @@
             <td class="info-header">
               <!-- Header Middle Text -->
               <h1 i18n:translate="" tal:content="laboratory/title|nothing"/>
-              <h2 i18n:translate="">Clinical Laboratory Services</h2>
+              <h2 i18n:translate="">Medical Laboratory Services</h2>
             </td>
             <td class="client-logo">
               <!-- Client/Hospital logo -->
