@@ -16,30 +16,47 @@
     text-align: center;
 }
 
+.sticker .left   { text-align: left; }
+.sticker .right  { text-align: right; }
+.sticker .center { text-align: center; }
+
+.sticker .error {
+    color: red;
+    font-size: 8pt;
+    z-index: 1000;
+}
+
 .sticker .barcode {
     margin: 0 auto;
-    padding: 0 0 !important;
+    padding: 1mm 0 !important;
     text-align: center;
 }
 
-.sticker .item-info .item_id {
+.sticker .hazardous {
+    color: red;
     font-weight:bold;
 }
 
-.sticker .item-info .hazardous img {
-    width: 8px;
+.sticker .estimated{
+    vertical-align:super;
+    font-size: 80%;
 }
 
-.sticker .item-info table {
+.sticker .sample-info table {
     border-collapse: collapse;
     margin: 1px 1px 1px 1px;
     width: 100%;
 }
-
-.sticker .item-info table td {
-    text-align: center;
+.sticker .sample-info table td:first-child {
+    padding: 0 0 0 3px;
+}
+.sticker .sample-info table td:last-child {
+    padding: 0 3px;
 }
 
+.sticker .sample-id {
+    font-weight:bold;
+}
 @media print {
     @page {
         size:  40mm 28mm !important;
