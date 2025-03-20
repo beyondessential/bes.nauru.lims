@@ -3,7 +3,7 @@
 LOCALES=${buildout:src-dir}/src/bes/nauru/lims/locales
 
 # Clean all generated .mo files
-find $LOCALES -name "*.mo" -delete
+find "$LOCALES" -name "*.mo" -delete
 
 # Manually compile all po files
 for po in $(find "$LOCALES" -name '*.po' | sort -t '\0' -n)

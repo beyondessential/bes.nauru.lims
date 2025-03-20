@@ -6,6 +6,7 @@ SRC=${buildout:src-dir}/src/bes/nauru/lims
 LOCALES=$SRC/locales
 BES_LOCALES=${buildout:directory}/src/bes.lims/src/bes/lims/locales
 
+
 function die() {
     echo "ERROR: $1"
 }
