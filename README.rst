@@ -21,11 +21,6 @@ depends on the following products, that belong to the SENAITE LIMS ecosystem:
 - `senaite.microorganism`_: microorganisms handling
 - `senaite.ast`_: antibiotic sensitivity testing (AST)
 
-- `senaite.patient`_: patients handling
-- `senaite.abx`_: antibiotics handling
-- `senaite.microorganism`_: microorganisms handling
-- `senaite.ast`_: antibiotic sensitivity testing (AST)
-
 Resources
 ---------
 
