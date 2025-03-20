@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-09-25 10:05+0000\n"
+"POT-Creation-Date: 2025-03-20 14:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,18 +21,18 @@ msgstr ""
 msgid "(Estimated)"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/adapters/listing/clients.py:32
-#: bes.nauru.lims/src/bes/nauru/lims/content/client.py:40
+#: bes.nauru.lims/src/bes/nauru/lims/adapters/listing/clients.py:44
+#: bes.nauru.lims/src/bes/nauru/lims/content/client.py:54
 msgid "Abbreviation"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/browser/content/warddepartments.py:50
-#: bes.nauru.lims/src/bes/nauru/lims/browser/content/wards.py:50
+#: bes.nauru.lims/src/bes/nauru/lims/browser/content/warddepartments.py:65
+#: bes.nauru.lims/src/bes/nauru/lims/browser/content/wards.py:64
 msgid "Active"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/browser/content/warddepartments.py:31
-#: bes.nauru.lims/src/bes/nauru/lims/browser/content/wards.py:31
+#: bes.nauru.lims/src/bes/nauru/lims/browser/content/warddepartments.py:46
+#: bes.nauru.lims/src/bes/nauru/lims/browser/content/wards.py:45
 msgid "Add"
 msgstr ""
 
@@ -45,8 +45,8 @@ msgstr ""
 msgid "Age"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/browser/content/warddepartments.py:62
-#: bes.nauru.lims/src/bes/nauru/lims/browser/content/wards.py:62
+#: bes.nauru.lims/src/bes/nauru/lims/browser/content/warddepartments.py:77
+#: bes.nauru.lims/src/bes/nauru/lims/browser/content/wards.py:76
 msgid "All"
 msgstr ""
 
@@ -58,7 +58,7 @@ msgstr ""
 msgid "Analysis Template"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/config.py:222
+#: bes.nauru.lims/src/bes/nauru/lims/config.py:236
 msgid "Asap"
 msgstr ""
 
@@ -74,32 +74,31 @@ msgstr ""
 msgid "Attachments per Row"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/behaviors/sampletemplate.py:40
+#: bes.nauru.lims/src/bes/nauru/lims/behaviors/sampletemplate.py:54
 msgid "Auto-text for when there is not enough volume"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/behaviors/containertype.py:23
+#: bes.nauru.lims/src/bes/nauru/lims/behaviors/containertype.py:37
 msgid "BACTEC bottle"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:166
+#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:180
 msgid "Bottle"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:201
+#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:215
 msgid "Bottles"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/content/labcontact.py:50
+#: bes.nauru.lims/src/bes/nauru/lims/content/labcontact.py:64
 msgid "Can reject samples"
 msgstr ""
 
 #: bes.nauru.lims/src/bes/nauru/lims/browser/sample/templates/rejection_content.pt:70
-#: bes.nauru.lims/src/bes/nauru/lims/impress/reports/Default.pt:204
 msgid "Clinical Laboratory Services"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:273
+#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:287
 msgid "Current antibiotic(s)"
 msgstr ""
 
@@ -115,7 +114,7 @@ msgstr ""
 msgid "Date collected"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:254
+#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:268
 msgid "Date of Admission"
 msgstr ""
 
@@ -123,7 +122,7 @@ msgstr ""
 msgid "Date of Admission must be before or equal the Sampled Date on"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/adapters/addsample.py:104
+#: bes.nauru.lims/src/bes/nauru/lims/adapters/addsample.py:118
 msgid "Date of Admission must be equal or before Sampled Date on {}"
 msgstr ""
 
@@ -131,32 +130,28 @@ msgstr ""
 msgid "Date received"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/content/labcontact.py:32
+#: bes.nauru.lims/src/bes/nauru/lims/content/labcontact.py:46
 msgid "Default Hospital/Clinic"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:317
+#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:331
 msgid "Department"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/browser/content/warddepartments.py:43
-#: bes.nauru.lims/src/bes/nauru/lims/browser/content/wards.py:43
-#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:215
+#: bes.nauru.lims/src/bes/nauru/lims/browser/content/warddepartments.py:58
+#: bes.nauru.lims/src/bes/nauru/lims/browser/content/wards.py:57
+#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:229
 msgid "Description"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/adapters/listing/samples.py:27
+#: bes.nauru.lims/src/bes/nauru/lims/adapters/listing/samples.py:41
 #: bes.nauru.lims/src/bes/nauru/lims/browser/sample/templates/rejection_content.pt:123
-#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:71
+#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:85
 msgid "Doctor"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/behaviors/samplecontainer.py:24
+#: bes.nauru.lims/src/bes/nauru/lims/behaviors/samplecontainer.py:38
 msgid "Dry weight of the container. When set, the volume of the sample is calculated automatically by subtracting this value from the container's weight set on sample registration"
-msgstr ""
-
-#: bes.nauru.lims/src/bes/nauru/lims/profiles/default/actions.xml
-msgid "Export to WHONET"
 msgstr ""
 
 #: bes.nauru.lims/src/bes/nauru/lims/impress/reports/Default.pt:740
@@ -167,12 +162,8 @@ msgstr ""
 msgid "Filename:"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/content/baseanalysis.py:25
+#: bes.nauru.lims/src/bes/nauru/lims/content/baseanalysis.py:39
 msgid "Flag"
-msgstr ""
-
-#: bes.nauru.lims/src/bes/nauru/lims/browser/whonet/templates/export.pt:49
-msgid "Generate CSV file"
 msgstr ""
 
 #: bes.nauru.lims/src/bes/nauru/lims/browser/sample/templates/rejection_content.pt:99
@@ -181,25 +172,25 @@ msgid "Hospital Number"
 msgstr ""
 
 #: bes.nauru.lims/src/bes/nauru/lims/browser/sample/templates/rejection_content.pt:127
-#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:65
+#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:79
 #: bes.nauru.lims/src/bes/nauru/lims/impress/reports/Default.pt:327
 msgid "Hospital/Clinic"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:167
+#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:181
 msgid "Identifier"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/config.py:216
+#: bes.nauru.lims/src/bes/nauru/lims/config.py:230
 msgid "Immigration"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/browser/content/warddepartments.py:56
-#: bes.nauru.lims/src/bes/nauru/lims/browser/content/wards.py:56
+#: bes.nauru.lims/src/bes/nauru/lims/browser/content/warddepartments.py:71
+#: bes.nauru.lims/src/bes/nauru/lims/browser/content/wards.py:70
 msgid "Inactive"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/config.py:213
+#: bes.nauru.lims/src/bes/nauru/lims/config.py:227
 msgid "Inpatient"
 msgstr ""
 
@@ -207,28 +198,32 @@ msgstr ""
 msgid "Invalidated"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/adapters/listing/samples.py:21
-#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:341
+#: bes.nauru.lims/src/bes/nauru/lims/adapters/listing/samples.py:35
+#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:355
 msgid "Location"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/adapters/listing/samples.py:24
+#: bes.nauru.lims/src/bes/nauru/lims/adapters/listing/samples.py:38
 msgid "Location ID"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/content/limssetup.py:25
+#: bes.nauru.lims/src/bes/nauru/lims/content/limssetup.py:39
 msgid "Logo to display in the header of results reports"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/content/client.py:27
+#: bes.nauru.lims/src/bes/nauru/lims/content/client.py:41
 msgid "Logo to display in the header of results reports for this client"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/behaviors/sampletemplate.py:31
+#: bes.nauru.lims/src/bes/nauru/lims/impress/reports/Default.pt:204
+msgid "Medical Laboratory Services"
+msgstr ""
+
+#: bes.nauru.lims/src/bes/nauru/lims/behaviors/sampletemplate.py:45
 msgid "MinimumVolume"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/content/baseanalysis.py:36
+#: bes.nauru.lims/src/bes/nauru/lims/content/baseanalysis.py:50
 msgid "Negative"
 msgstr ""
 
@@ -236,19 +231,19 @@ msgstr ""
 msgid "Normal values"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/adapters/form.py:109
+#: bes.nauru.lims/src/bes/nauru/lims/adapters/form.py:123
 msgid "Not a valid quantity or unit"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/behaviors/sampletemplate.py:64
+#: bes.nauru.lims/src/bes/nauru/lims/behaviors/sampletemplate.py:78
 msgid "Not a valid volume"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/adapters/listing/samples.py:84
+#: bes.nauru.lims/src/bes/nauru/lims/adapters/listing/samples.py:98
 msgid "Not enough sample"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/config.py:217
+#: bes.nauru.lims/src/bes/nauru/lims/config.py:231
 msgid "Not specified"
 msgstr ""
 
@@ -256,7 +251,7 @@ msgstr ""
 msgid "Number of attachments rendered within one row per Analysis Request"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/config.py:214
+#: bes.nauru.lims/src/bes/nauru/lims/config.py:228
 msgid "Outpatient"
 msgstr ""
 
@@ -277,7 +272,7 @@ msgstr ""
 msgid "Place of residence"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/content/baseanalysis.py:37
+#: bes.nauru.lims/src/bes/nauru/lims/content/baseanalysis.py:51
 msgid "Positive"
 msgstr ""
 
@@ -285,11 +280,11 @@ msgstr ""
 msgid "Provisional report"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/config.py:215
+#: bes.nauru.lims/src/bes/nauru/lims/config.py:229
 msgid "Referral"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:238
+#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:252
 msgid "Relevant clinical information"
 msgstr ""
 
@@ -297,8 +292,8 @@ msgstr ""
 msgid "Removed microorganisms:"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/content/client.py:26
-#: bes.nauru.lims/src/bes/nauru/lims/content/limssetup.py:24
+#: bes.nauru.lims/src/bes/nauru/lims/content/client.py:40
+#: bes.nauru.lims/src/bes/nauru/lims/content/limssetup.py:38
 msgid "Report Logo"
 msgstr ""
 
@@ -322,7 +317,7 @@ msgstr ""
 msgid "Revised report for sample"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/config.py:223
+#: bes.nauru.lims/src/bes/nauru/lims/config.py:237
 msgid "Routine"
 msgstr ""
 
@@ -361,15 +356,15 @@ msgstr ""
 msgid "Site"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:107
+#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:121
 msgid "Site additional information"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/adapters/addsample.py:84
+#: bes.nauru.lims/src/bes/nauru/lims/adapters/addsample.py:98
 msgid "Specification is required"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/config.py:221
+#: bes.nauru.lims/src/bes/nauru/lims/config.py:235
 msgid "Stat"
 msgstr ""
 
@@ -389,15 +384,15 @@ msgstr ""
 msgid "The Doctor assigned to this sample is unknown"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/content/client.py:41
+#: bes.nauru.lims/src/bes/nauru/lims/content/client.py:55
 msgid "The abbreviation of the hospital"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/content/labcontact.py:33
+#: bes.nauru.lims/src/bes/nauru/lims/content/labcontact.py:47
 msgid "The hospital or clinic to be selected by default on sample creation"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/behaviors/sampletemplate.py:32
+#: bes.nauru.lims/src/bes/nauru/lims/behaviors/sampletemplate.py:46
 msgid "The minimum sample volume required for analysis eg. '10 ml'"
 msgstr ""
 
@@ -417,50 +412,42 @@ msgstr ""
 msgid "This Sample has been replaced by"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/browser/content/warddepartments.py:40
-#: bes.nauru.lims/src/bes/nauru/lims/browser/content/wards.py:40
+#: bes.nauru.lims/src/bes/nauru/lims/browser/content/warddepartments.py:55
+#: bes.nauru.lims/src/bes/nauru/lims/browser/content/wards.py:54
 msgid "Title"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/adapters/actions.py:25
+#: bes.nauru.lims/src/bes/nauru/lims/adapters/actions.py:39
 msgid "Too many samples selected"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/adapters/listing/samples.py:78
+#: bes.nauru.lims/src/bes/nauru/lims/adapters/listing/samples.py:92
 msgid "Unknown doctor"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/browser/whonet/templates/export.pt:34
-msgid "Verified and published analyses, from samples collected between"
-msgstr ""
-
-#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:298
+#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:312
 msgid "Volume"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:169
+#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:183
 msgid "Volume (ml)"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/adapters/addsample.py:133
-#: bes.nauru.lims/src/bes/nauru/lims/adapters/form.py:82
+#: bes.nauru.lims/src/bes/nauru/lims/adapters/addsample.py:147
+#: bes.nauru.lims/src/bes/nauru/lims/adapters/form.py:96
 msgid "Volume is below {}"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/adapters/addsample.py:174
+#: bes.nauru.lims/src/bes/nauru/lims/adapters/addsample.py:188
 msgid "Volume is over {}"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:299
+#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:313
 msgid "Volume of sample, expressed as quantity and unit (e.g '10 ml')"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/browser/whonet/templates/export.pt:12
-msgid "WHONET Export"
-msgstr ""
-
 #: bes.nauru.lims/src/bes/nauru/lims/browser/sample/templates/rejection_content.pt:131
-#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:134
+#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:148
 #: bes.nauru.lims/src/bes/nauru/lims/impress/reports/Default.pt:331
 msgid "Ward"
 msgstr ""
@@ -477,28 +464,24 @@ msgstr ""
 msgid "Wards"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/behaviors/samplecontainer.py:23
+#: bes.nauru.lims/src/bes/nauru/lims/behaviors/samplecontainer.py:37
 msgid "Weight"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:168
+#: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:182
 msgid "Weight (g)"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/behaviors/sampletemplate.py:41
+#: bes.nauru.lims/src/bes/nauru/lims/behaviors/sampletemplate.py:55
 msgid "When there is not enough volume, the contents entered here are automatically inserted in Results Interpretation after Sample verification"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/behaviors/containertype.py:24
+#: bes.nauru.lims/src/bes/nauru/lims/behaviors/containertype.py:38
 msgid "Whether containers from this type are available for selection when the default container for the selected sample type is a BACTEC bottle"
 msgstr ""
 
-#: bes.nauru.lims/src/bes/nauru/lims/content/labcontact.py:51
+#: bes.nauru.lims/src/bes/nauru/lims/content/labcontact.py:65
 msgid "Whether the user linked to this laboratory contact is authorised to reject samples. Note that user won't be able to reject a sample if she/he does not belong to an authorised group (LabManager or LabClerk), even if this option is selected"
-msgstr ""
-
-#: bes.nauru.lims/src/bes/nauru/lims/browser/whonet/templates/export.pt:42
-msgid "and"
 msgstr ""
 
 #: bes.nauru.lims/src/bes/nauru/lims/impress/reports/Default.pt:596
