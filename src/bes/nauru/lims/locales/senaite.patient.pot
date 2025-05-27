@@ -50,7 +50,4 @@ msgstr ""
 
 #: senaite/patient/subscribers/analysisrequest.py:106
 
-
 #: senaite/patient/content/patient.py:108
-msgid "label_patient_mrn"
-msgstr "MRN"
