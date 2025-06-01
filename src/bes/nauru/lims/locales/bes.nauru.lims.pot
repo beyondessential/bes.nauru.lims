@@ -168,8 +168,6 @@ msgstr ""
 
 #: bes.nauru.lims/src/bes/nauru/lims/browser/sample/templates/rejection_content.pt:99
 #: bes.nauru.lims/src/bes/nauru/lims/impress/reports/Default.pt:299
-msgid "Hospital Number"
-msgstr ""
 
 #: bes.nauru.lims/src/bes/nauru/lims/browser/sample/templates/rejection_content.pt:127
 #: bes.nauru.lims/src/bes/nauru/lims/content/analysisrequest.py:79
