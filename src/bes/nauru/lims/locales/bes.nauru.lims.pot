@@ -59,8 +59,6 @@ msgid "Analysis Template"
 msgstr ""
 
 #: bes.nauru.lims/src/bes/nauru/lims/config.py:236
-msgid "Asap"
-msgstr ""
 
 #: bes.nauru.lims/src/bes/nauru/lims/impress/reports/Default.pt:626
 msgid "Attachment for"
