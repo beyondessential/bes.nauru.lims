@@ -3,6 +3,8 @@ Changelog
 
 1.0.0 (Unreleased)
 ------------------
+
+- #25 Remove custom reflex machinery
 - #24 Modify Sample Priority List
 - #21 Change "Hospital ID" to "Medical Records Number"
 - #20 Compatibility with core#2692 (Refactor sticker functionality)
