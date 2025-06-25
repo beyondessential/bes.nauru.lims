@@ -23,7 +23,6 @@
   <include package=".content" />
   <include package=".impress" />
   <include package=".patches" />
-  <include package=".reflex" />
   <include package=".subscribers" />
   <include package=".workflow" />
 
