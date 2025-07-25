@@ -7,13 +7,4 @@
     directory="reports"
     type="senaite.impress.reports" />
 
-  <!-- Product-specific controller view for Multi Results Reports -->
-  <adapter
-    for="zope.interface.Interface
-         bes.nauru.lims.interfaces.IBesNauruLimsLayer"
-    name="AnalysisRequest"
-    factory=".reportview.DefaultReportView"
-    provides="senaite.impress.interfaces.IReportView"
-    permission="zope2.View" />
-
 </configure>
