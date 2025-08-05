@@ -3,7 +3,7 @@ Changelog
 
 1.0.0 (Unreleased)
 ------------------
-
+- #30 Fix error on results report generation of an invalidated sample
 - #27 Port check provisional analyses condition to bes.lims
 - #26 Compatibility with bes#14 (Merge PDF attachments into results report)
 - #25 Remove custom reflex machinery
