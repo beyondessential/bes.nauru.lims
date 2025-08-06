@@ -3,6 +3,8 @@ Changelog
 
 1.0.0 (Unreleased)
 ------------------
+
+- #24 Change date format to dd/mm/yyyy
 - #30 Fix error on results report generation of an invalidated sample
 - #27 Port check provisional analyses condition to bes.lims
 - #26 Compatibility with bes#14 (Merge PDF attachments into results report)
