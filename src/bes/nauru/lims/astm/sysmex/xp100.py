@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 #
-# This file is part of PALAU.LIMS.
+    # This file is part of BES.NAURU.LIMS.
 #
-# PALAU.LIMS is free software: you can redistribute it and/or modify it under
+# BES.NAURU.LIMS is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
 # Foundation, version 2.
 #
@@ -18,7 +18,7 @@
 # Copyright 2023-2025 by it's authors.
 # Some rights reserved, see README and LICENSE.
 
-from palau.lims.astm.sysmex import SysmexASTMImporter
+from bes.nauru.lims.astm.sysmex import SysmexASTMImporter
 from senaite.core.interfaces import IASTMImporter
 from senaite.core.interfaces import ISenaiteCore
 from zope.component import adapter
