@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 #
-# This file is part of PALAU.LIMS.
+# This file is part of BES.NAURU.LIMS.
 #
-# PALAU.LIMS is free software: you can redistribute it and/or modify it under
+# BES.NAURU.LIMS is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
 # Foundation, version 2.
 #
@@ -21,7 +21,7 @@
 import collections
 
 from bika.lims import api
-from palau.lims.astm import ASTMBaseImporter as Base
+from bes.nauru.lims.astm import ASTMBaseImporter as Base
 
 # 4. test_id:             Chlamydia       Gonorrhea     HBV-VL
 # 5. test_name:           Xpert CT_NG     Xpert CT_NG   Xpert HBV Viral Load
