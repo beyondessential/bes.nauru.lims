@@ -4,6 +4,7 @@ Changelog
 1.0.0 (Unreleased)
 ------------------
 
+- #38 Enable self-verification of AST-like services and analyses
 - #24 Change date format to dd/mm/yyyy
 - #30 Fix error on results report generation of an invalidated sample
 - #27 Port check provisional analyses condition to bes.lims
