@@ -25,6 +25,7 @@
   <include package=".impress" />
   <include package=".patches" />
   <include package=".subscribers" />
+  <include package=".upgrade" />
   <include package=".workflow" />
 
   <!-- Default profile -->
