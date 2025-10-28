@@ -1,0 +1,7 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+
+  <!-- Roche Cobas C 311 -->
+  <adapter name="c311" factory=".c311.ASTMImporter"/>
+  <adapter name="cobas c 311" factory=".c311.ASTMImporter"/>
+
+</configure>
