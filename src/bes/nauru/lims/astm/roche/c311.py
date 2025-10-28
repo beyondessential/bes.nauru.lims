@@ -53,10 +53,10 @@ class ASTMImporter(Base):
             # this is the sample id as described in the docs
             return sample.strip()
 
-        # This field behaves different from what is described in the docS. It
+        # This field behaves different from what is described in the docs. It
         # should be a single string, but is a component of 5 fields
         sample_id = sample.get("sample_id")
-        if sample_id:
+        if api.is_string(sample_id):
             return sample_id.strip()
 
         return default
