@@ -4,6 +4,7 @@ Changelog
 1.0.0 (Unreleased)
 ------------------
 
+- #45 Fix missing value for split_length subfield in ID Server
 - #42 Add ASTM Consumer for cobas® c 311 analyzer
 - #38 Enable self-verification of AST-like services and analyses
 - #24 Change date format to dd/mm/yyyy
